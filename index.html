@@ -455,25 +455,42 @@ VALUES
 
                 <h3>Tablas</h3>
                 <pre>
+-- Tabla de clientes
 CREATE TABLE Clientes_Info (
     ClienteID INT IDENTITY(1,1) PRIMARY KEY,
     Nombre_RazonSocial NVARCHAR(100) NOT NULL,
     Telefono NVARCHAR(15),
     Correo NVARCHAR(50)
 );
+GO
 
+-- Tabla de datos fiscales
+CREATE TABLE Clientes_Fiscal (
+    ClienteFiscalID INT IDENTITY(1,1) PRIMARY KEY,
+    ClienteID INT NOT NULL,
+    RFC NVARCHAR(15) NOT NULL,
+    DireccionFiscal NVARCHAR(150),
+    TipoCliente NVARCHAR(20) NOT NULL,
+    CONSTRAINT FK_Clientes_Fiscal_Clientes_Info FOREIGN KEY (ClienteID)
+        REFERENCES Clientes_Info(ClienteID)
+);
+GO
+
+-- Tabla de facturas
 CREATE TABLE Facturas (
     FacturaID INT IDENTITY(1,1) PRIMARY KEY,
     ClienteID INT NOT NULL,
     FechaEmision DATETIME NOT NULL DEFAULT GETDATE(),
     FolioFactura NVARCHAR(50),
-    Concepto NVARCHAR(255), 
+    Concepto NVARCHAR(255),
     Subtotal DECIMAL(10,2) NOT NULL,
     IVA DECIMAL(10,2) NOT NULL,
     Total DECIMAL(10,2) NOT NULL,
     CONSTRAINT FK_Facturas_Clientes_Info FOREIGN KEY (ClienteID)
         REFERENCES Clientes_Info(ClienteID)
 );
+GO
+
                 </pre>
 
                 <h3>Registros</h3>
