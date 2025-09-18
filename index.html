@@ -323,20 +323,43 @@ VALUES
 CREATE TABLE Clientes (
     ClienteID INT IDENTITY(1,1) PRIMARY KEY,
     Nombre NVARCHAR(100) NOT NULL,
-    Apelli_Paterno NVARCHAR(100) NOT NULL,
-    Apellido_Materno NVARCHAR(100) NOT NULL,
+	Apelli_Paterno NVARCHAR(100) NOT NULL,
+	Apellido_Materno NVARCHAR(100) NOT NULL,
     FechaRegistro DATETIME DEFAULT GETDATE(),
     TipoCliente NVARCHAR(50),
     Notas NVARCHAR(250)
 );
 
+
 CREATE TABLE Contactos_Cliente (
     ContactoID INT IDENTITY(1,1) PRIMARY KEY,
     ClienteID INT NOT NULL,
-    TipoContacto NVARCHAR(20) NOT NULL,
+    TipoContacto NVARCHAR(20) NOT NULL, -- 'Telefono' o 'Correo'
     Valor NVARCHAR(50) NOT NULL,
     FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
 );
+
+
+CREATE TABLE Direcciones_Cliente (
+    DireccionID INT IDENTITY(1,1) PRIMARY KEY,
+    ClienteID INT NOT NULL,
+    TipoDireccion NVARCHAR(20), -- 'Fiscal' o 'Residencial'
+    Calle NVARCHAR(100),
+    Ciudad NVARCHAR(50),
+    Estado NVARCHAR(50),
+    CodigoPostal NVARCHAR(10),
+    Pais NVARCHAR(50),
+    FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
+);
+
+-- Tabla de Datos Fiscales (opcional)
+CREATE TABLE Clientes_Fiscal (
+    ClienteID INT PRIMARY KEY,
+    RFC NVARCHAR(15) NOT NULL,
+    RazonSocial NVARCHAR(100),
+    FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
+);
+
                 </pre>
 
                 <h3>Registros</h3>
