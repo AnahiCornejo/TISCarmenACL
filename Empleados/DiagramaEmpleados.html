@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hotel – Gestión (Inventario, Proveedores, Horarios, Reservaciones, Habitaciones)</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #121a2b;
+      --muted: #8aa0c3;
+      --text: #e7ecf5;
+      --accent: #4ea1ff;
+      --accent-2: #79f2d0;
+      --border: #24324f;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(78,161,255,.25), transparent 60%),
+                  radial-gradient(1000px 700px at 0% 110%, rgba(121,242,208,.2), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,18,32,.8);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .wrap {
+      max-width: 1100px;
+      margin-inline: auto;
+      padding: 18px 20px;
+    }
+    nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+    .navlinks {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--text);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      transition: background 0.3s;
+    }
+    .chip:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    main {
+      padding: 28px 20px;
+    }
+    h1 {
+      font-size: clamp(24px, 3.5vw, 40px);
+      line-height: 1.05;
+      margin: 10px 0 6px;
+    }
+    p.lead {
+      color: var(--muted);
+      max-width: 72ch;
+    }
+    .grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 22px;
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.15);
+      margin-top: 22px;
+    }
+    .card h2 {
+      font-size: clamp(18px, 2.4vw, 24px);
+      margin: 0 0 10px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    section {
+      scroll-margin-top: 90px;
+    }
+    .fields {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 12px;
+    }
+    .field {
+      padding: 10px 12px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .desc {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .anchor {
+      display: inline-block;
+      margin-top: 22px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .anchor:hover {
+      text-decoration: underline;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      background: rgba(255,255,255,.02);
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- HEADER CON NAVEGACIÓN -->
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand">Hotel – Gestión</div>
+      <div class="navlinks">
+        <a href="../Empleados/Empleados.html" style="color: white;">Regresar</a>
+        <a class="chip" href="../index.html" style="color: white;">🏠 Inicio</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="wrap">
+    <h1>Diagrama en la base de datos de Empleados</h1>
+    <p class="lead">Sistema de control y administración de empleados del hotel, que registra información personal, sueldos, horarios y contactos,
+         gestionando permisos según el rol para un manejo seguro y eficiente del personal.</p>
+    <!-- DESCRIPCIÓN DEL SISTEMA -->
+    <section class="card">
+      <h2>Empleados</h2>
+      <ul>
+        </li>El sistema permite al gerente agregar, editar, visualizar y eliminar empleados; al dueño, consultar y autorizar cambios; y a los empleados, actualizar su información de contacto. Esto asegura una gestión eficiente y
+         organizada del personal, manteniendo los datos siempre actualizados para la administración del hotel.</li>
+      </ul>
+    </section>
+
+    <!-- USUARIOS DEL SISTEMA -->
+    <section class="card">
+      <h2>Diagrama de base de datos </h2>
+      <img src="../Imagenes/DiagramaEmpleados.jpg" alt="Descripción de la imagen" width="800" height="400" style="display: block; margin: 0 auto;">
+    </section> 
+
+<section class="card">
+  <h2>Descripción de Pertinencia de la Arquitectura de la Base de Datos, en la tabla habitaciones</h2>
+  <p>
+    </li>Esta arquitectura relacional es pertinente porque permite gestionar la información del personal de manera ordenada, segura y eficiente, 
+    apoyando la operación diaria del hotel y facilitando la toma de decisiones en recursos humanos y administración.</li>
+  </p>
+
+ <h3>Explicación de cada campo - Empleados_Basico</h3>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th>Campo</th>
+      <th>Tipo de dato</th>
+      <th>Permitir valores nulos</th>
+      <th>Propósito y Justificación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ID_Empleado</td>
+      <td>int (IDENTITY)</td>
+      <td>No</td>
+      <td>Identificador único de cada empleado; clave primaria para diferenciar registros.</td>
+    </tr>
+    <tr>
+      <td>Nombre</td>
+      <td>varchar(100)</td>
+      <td>No</td>
+      <td>Almacena el nombre del empleado para identificación.</td>
+    </tr>
+    <tr>
+      <td>Apellido_Paterno</td>
+      <td>varchar(100)</td>
+      <td>No</td>
+      <td>Primer apellido del empleado, necesario para identificación formal.</td>
+    </tr>
+    <tr>
+      <td>Apellido_Materno</td>
+      <td>varchar(100)</td>
+      <td>No</td>
+      <td>Segundo apellido del empleado, permite identificación completa.</td>
+    </tr>
+    <tr>
+      <td>Puesto</td>
+      <td>varchar(50)</td>
+      <td>No</td>
+      <td>Indica el cargo que ocupa el empleado en el hotel.</td>
+    </tr>
+    <tr>
+      <td>ID_Horario</td>
+      <td>int</td>
+      <td>Sí</td>
+      <td>Relaciona al empleado con un horario específico; puede ser NULL si no se asigna.</td>
+    </tr>
+    <tr>
+      <td>Fecha_Salida</td>
+      <td>date</td>
+      <td>Sí</td>
+      <td>Fecha en que el empleado dejó la empresa; NULL mientras siga activo.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Explicación de cada campo - Empleados_Sueldo</h3>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th>Campo</th>
+      <th>Tipo de dato</th>
+      <th>Permitir valores nulos</th>
+      <th>Propósito y Justificación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ID_Empleado</td>
+      <td>int</td>
+      <td>No</td>
+      <td>Clave primaria y foránea hacia Empleados_Basico; permite vincular sueldo con empleado.</td>
+    </tr>
+    <tr>
+      <td>Sueldo</td>
+      <td>decimal(10,2)</td>
+      <td>No</td>
+      <td>Almacena el salario del empleado, con precisión para centavos.</td>
+    </tr>
+    <tr>
+      <td>Fecha_Ingreso</td>
+      <td>date</td>
+      <td>No</td>
+      <td>Indica la fecha en que el empleado comenzó a recibir ese sueldo.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Explicación de cada campo - Empleados_Contacto</h3>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th>Campo</th>
+      <th>Tipo de dato</th>
+      <th>Permitir valores nulos</th>
+      <th>Propósito y Justificación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ID_Empleado</td>
+      <td>int</td>
+      <td>No</td>
+      <td>Clave primaria y foránea hacia Empleados_Basico; permite vincular datos de contacto.</td>
+    </tr>
+    <tr>
+      <td>Telefono</td>
+      <td>nvarchar(15)</td>
+      <td>Sí</td>
+      <td>Almacena el número de teléfono del empleado.</td>
+    </tr>
+    <tr>
+      <td>Correo</td>
+      <td>varchar(100)</td>
+      <td>Sí</td>
+      <td>Guarda el correo electrónico del empleado.</td>
+    </tr>
+    <tr>
+      <td>Observaciones</td>
+      <td>nvarchar(255)</td>
+      <td>Sí</td>
+      <td>Permite registrar notas o información adicional sobre el empleado.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+    <!-- VOLVER ARRIBA -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; gap:18px; padding:18px 20px">
+      <small>© <span id="y"></span> Hotel – Sistema de Gestión</small>
+      <a class="chip" href="#top">↑ Subir</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
