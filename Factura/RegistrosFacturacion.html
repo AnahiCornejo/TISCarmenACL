@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hotel – Gestión (Clientes, Empleados y Facturación)</title>
+  <title>Hotel – Gestión (Empleados, Clientes y Facturación)</title>
   <style>
     :root {
       --bg: #0b1220;
@@ -161,81 +161,92 @@
 
   <!-- CONTENIDO PRINCIPAL -->
   <main class="wrap">
-    <h1>Codigó SQL aplicado en los Clientes del Hotel Paris.</h1>
-    <p class="lead"> Desarrollar un sistema de control y administración de clientes para el hotel,
-         que permita registrar y gestionar de forma segura y eficiente</p>
+    <h1>Registros del codigó SQL</h1>
+    <p class="lead">Sistema de control y administración de empleados del hotel, que registra información personal, sueldos, horarios y contactos, gestionando permisos según el rol para un manejo seguro y eficiente del personal.</p>
     <!-- DESCRIPCIÓN DEL SISTEMA -->
     <section class="card">
-      <h2>Clientes</h2>
+      <h2>Empleados</h2>
       <ul>
-        </li>Desarrollar una base de datos relacional que centralice la información de clientes y comentarios relacionados, implementando integridad referencial mediante claves primarias y foráneas para garantizar la consistencia de los datos. La base permitirá la gestión eficiente de registros de clientes, sus datos fiscales, direcciones, y comentarios vinculados a empleados, optimizando consultas y facilitando la escalabilidad del sistema.</li>
+        </li>Diseñar y administrar una base de datos que permita registrar, organizar y controlar la información del personal del hotel, 
+        incluyendo sus datos básicos, salarios y medios de contacto, con el fin de optimizar la gestión de recursos humanos, 
+        garantizar la integridad de los datos y facilitar el acceso oportuno a la información para la toma de decisiones.</li>
       </ul>
     </section>
 
-   <!-- CODIGO SQL PARA LAS TABLAS DE CLIENTES -->
+    <!-- USUARIOS DEL SISTEMA -->
+   
+
+<!-- REGISTROS EN LAS TABLAS DEL HOTEL -->
 <section class="card">
-  <h2>Código SQL para las tablas de Clientes</h2>
+  <h2>Registros de la tabla "Clientes"</h2>
+  <pre><code>
+INSERT INTO Clientes (
+    Primer_Nombre,
+    Segundo_Nombre,
+    Apellido_Paterno,
+    Apellido_Materno,
+    RFC,
+    Tipo_Persona,
+    Numero_Telefono,
+    Correo,
+    Calle,
+    Colonia,
+    Numero_Exterior,
+    Numero_Interior,
+    Codigo_Postal
+) VALUES 
+('Juan', 'Carlos', 'Pérez', 'Gómez', 'PEJ123456789', 'Fisica', '5551234567', 'juan.perez@example.com', 'Av. Siempre Viva', 'Centro', '123', NULL, '12345'),
+('María', NULL, 'Lopez', 'Martinez', 'MLO987654321', 'Fisica', '5559876543', 'maria.lopez@example.com', 'Calle Falsa', 'Colonia Falsa', '456', NULL, '54321'),
+('Empresa SA', NULL, 'García', NULL, 'EMP123456789', 'Moral', '5551112222', 'info@empresa.com', 'Paseo de la Reforma', 'Polanco', '789', NULL, '67890');
+  </code></pre>
+</section>
+
+<section class="card">
+  <h2>Registros de la tabla "Factura"</h2>
+  <pre><code>
+INSERT INTO Factura (RFC_Emisor, Nombre_Emisor, Regimen_Fiscal, Uso_CFDI)
+VALUES 
+('PEJ123456789', 'Juan Pérez Gómez', '601', 'G01'),
+('MLO987654321', 'María López Martinez', '603', 'G02'),
+('EMP123456789', 'Empresa SA', '605', 'G03');
+  </code></pre>
+</section>
+
+<section class="card">
+  <h2>Registros de la tabla "Gastos"</h2>
+  <pre><code>
+INSERT INTO Gastos (ID_Servicio, ID_Reservacion, ID_Restaurante, ID_Producto, Cantidad_Producto, SubTotal, IVA, Total)
+VALUES 
+(NULL, NULL, NULL, NULL, 2, 100.00, 16.00, 116.00),
+(NULL, NULL, NULL, NULL, 1, 50.00, 8.00, 58.00),
+(NULL, NULL, NULL, NULL, 5, 200.00, 32.00, 232.00);
+  </code></pre>
+</section>
+
+<section class="card">
+  <h2>Registros de la tabla "Facturar"</h2>
+  <pre><code>
+INSERT INTO Facturar (RFC_Emisor, Nombre_Emisor, Numero_Serie, Fecha, Hora, Efecto_Comprobante, Regimen_Fiscal, Exportacion, ID_Gasto, ID_Factura, Id_Cliente)
+VALUES 
+('PEJ123456789', 'Juan Pérez Gómez', 'SER123', '2025-09-25', '10:00:00', 'Ingreso', '601', 'No', 1, 1, 2);
+  </code></pre>
+</section>
+
+<section class="card">
+  <h2>Consultas para verificar registros</h2>
+  <pre><code>
+SELECT * FROM Gastos; -- Para verificar ID_Gasto
+SELECT * FROM Factura; -- Para verificar ID_Factura
+SELECT * FROM Clientes; -- Para verificar Id_Cliente
+SELECT * FROM Factura; -- Para verificar todas las facturas
+  </code></pre>
+</section>
+
+<section class="card">
+      <h2>Comprobación de los resgistros</h2>
+      
+      <img src="../Imagenes/RegistrosFacturacion.jpg" alt="Registros tabla Proveedor" width="1000" height="400" style="display: block; margin: 0 auto;">
 </section> 
-
-<section class="card">
-  <h2>Creación de la base de datos</h2>
-  <pre><code>
-CREATE DATABASE HotelClientes;
-GO
-  </code></pre>
-</section>
-
-<section class="card">
-  <h2>Seleccionar la base de datos</h2>
-  <pre><code>
-USE HotelClientes;
-GO
-  </code></pre>
-</section>
-
-<section class="card">
-  <h2>Crear tabla "Clientes"</h2>
-  <pre><code>
-CREATE TABLE Clientes (
-    Id_Cliente INT IDENTITY(1,1) PRIMARY KEY,
-    Primer_Nombre NVARCHAR(50) NOT NULL,
-    Segundo_Nombre NVARCHAR(50) NULL,
-    Apellido_Paterno NVARCHAR(50) NOT NULL,
-    Apellido_Materno NVARCHAR(50) NULL,
-    RFC NVARCHAR(13) NOT NULL UNIQUE, -- un RFC no debe repetirse
-    Tipo_Persona NVARCHAR(10) NOT NULL,  -- 'Fisica' o 'Moral'
-    Numero_Telefono NVARCHAR(15) NOT NULL,
-    Correo NVARCHAR(100) NULL,
-    Calle NVARCHAR(100) NOT NULL,
-    Colonia NVARCHAR(100) NOT NULL,
-    Numero_Exterior NVARCHAR(10) NOT NULL,
-    Numero_Interior NVARCHAR(10) NULL,
-    Codigo_Postal NVARCHAR(5) NOT NULL,
-    Fecha_Nacimiento DATE NULL,
-    Fecha_Registro DATE DEFAULT GETDATE()
-);
-GO
-  </code></pre>
-</section>
-
-<section class="card">
-  <h2>Crear tabla "Comentarios"</h2>
-  <pre><code>
-CREATE TABLE Comentarios (
-    Id_Comentario INT IDENTITY(1,1) PRIMARY KEY,
-    Id_Cliente INT NOT NULL,
-    Id_Empleado INT NULL,  -- Comentario relacionado con un empleado específico
-    Fecha DATE NOT NULL,
-    Comentario NVARCHAR(255) NOT NULL,
-    Tipo_Comentario NVARCHAR(20) NULL,
-    Respuesta NVARCHAR(255) NULL,
-    FOREIGN KEY (Id_Cliente) REFERENCES Clientes(Id_Cliente),
-    FOREIGN KEY (Id_Empleado) REFERENCES Empleados(Id_Empleado)  -- Relación con el empleado que fue comentado
-);
-GO
-  </code></pre>
-</section>
-
 
     <!-- VOLVER ARRIBA -->
   </main>

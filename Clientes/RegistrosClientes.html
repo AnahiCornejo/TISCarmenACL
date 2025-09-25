@@ -162,118 +162,54 @@
   <!-- CONTENIDO PRINCIPAL -->
   <main class="wrap">
     <h1>Registros del codigó SQL</h1>
-    <p class="lead">Sistema de control y administración de clientes del hotel, que registra datos personales, contactos, direcciones y datos fiscales, gestionando la información de forma segura y eficiente para mejorar la atención al cliente.</p>
+    <p class="lead"> Desarrollar un sistema de control y administración de clientes para el hotel, que permita registrar y gestionar de forma segura y eficiente</p>
     <!-- DESCRIPCIÓN DEL SISTEMA -->
     <section class="card">
       <h2>Clientes</h2>
       <ul>
-        </li>Diseñar y administrar un sistema de almacenamiento estructurado que permita registrar, organizar y mantener actualizada la información de los clientes, incluyendo sus datos personales, contactos, direcciones y datos fiscales, con el fin de facilitar la gestión comercial,
-         asegurar el cumplimiento de requisitos legales y de facturación, y mejorar la atención al cliente.</li>
+        </li>Desarrollar una base de datos relacional que centralice la información de clientes y comentarios relacionados, implementando integridad referencial mediante claves primarias y foráneas para garantizar la consistencia de los datos. La base permitirá la gestión eficiente de registros de clientes, sus datos fiscales, direcciones, y comentarios vinculados a empleados, optimizando consultas y facilitando la escalabilidad del sistema.</li>
       </ul>
     </section>
 
     <!-- USUARIOS DEL SISTEMA -->
    
-
 <section class="card">
   <h2>Registros de la tabla "Clientes"</h2>
   <pre><code>
 INSERT INTO Clientes (
-    Nombre,
-    Apelli_Paterno,
-    Apellido_Materno,
-    TipoCliente,
-    TipoPersona,
-    Notas
-) VALUES
-('Juan', 'Pérez', 'Gómez', 'Regular', 'Fisica', 'Cliente frecuente'),
-('Tech Solutions', '', '', 'VIP', 'Moral', 'Empresa contratante de servicios TI'),
-('María', 'López', 'Hernández', 'Regular', 'Fisica', 'Cliente nuevo'),
-('Innovatech', '', '', 'VIP', 'Moral', 'Empresa proveedora de software'),
-('Carlos', 'Ramírez', 'Santos', 'Regular', 'Fisica', 'Cliente frecuente'),
-('Construcciones Delta', '', '', 'VIP', 'Moral', 'Empresa de construcción');
-GO
-  </code></pre>
-</section>
-
-<section class="card">
-  <h2>Registros de la tabla "Contactos_Cliente"</h2>
-  <pre><code>
-INSERT INTO Contactos_Cliente (
-    ClienteID,
-    TipoContacto,
-    Valor
-) VALUES
-(1, 'Telefono', '555-123-4567'),
-(1, 'Correo', 'juan.perez@email.com'),
-(2, 'Telefono', '555-987-6543'),
-(2, 'Correo', 'contacto@techsolutions.com'),
-(3, 'Telefono', '555-321-7654'),
-(3, 'Correo', 'maria.lopez@email.com'),
-(4, 'Telefono', '555-456-7890'),
-(4, 'Correo', 'contacto@innovatech.com'),
-(5, 'Telefono', '555-654-3210'),
-(5, 'Correo', 'carlos.ramirez@email.com'),
-(6, 'Telefono', '555-111-2222'),
-(6, 'Correo', 'info@construccionesdelta.com');
-GO
-  </code></pre>
-</section>
-
-<section class="card">
-  <h2>Registros de la tabla "Direcciones_Cliente"</h2>
-  <pre><code>
-INSERT INTO Direcciones_Cliente (
-    ClienteID,
-    TipoDireccion,
-    Calle,
-    Ciudad,
-    Estado,
-    CodigoPostal,
-    Pais
-) VALUES
-(1, 'Residencial', 'Av. Reforma 123', 'Ciudad de México', 'CDMX', '01000', 'México'),
-(1, 'Fiscal', 'Calle Fiscal 45', 'Ciudad de México', 'CDMX', '01001', 'México'),
-(2, 'Residencial', 'Blvd. Empresarial 100', 'Guadalajara', 'Jalisco', '44100', 'México'),
-(2, 'Fiscal', 'Av. Corporativa 500', 'Guadalajara', 'Jalisco', '44101', 'México'),
-(3, 'Residencial', 'Calle Luna 12', 'Monterrey', 'Nuevo León', '64000', 'México'),
-(3, 'Fiscal', 'Av. Reforma 55', 'Monterrey', 'Nuevo León', '64001', 'México'),
-(4, 'Residencial', 'Av. Tecnológica 200', 'Querétaro', 'Querétaro', '76000', 'México'),
-(4, 'Fiscal', 'Calle Corporativa 300', 'Querétaro', 'Querétaro', '76001', 'México'),
-(5, 'Residencial', 'Calle Sol 45', 'Puebla', 'Puebla', '72000', 'México'),
-(5, 'Fiscal', 'Av. Central 78', 'Puebla', 'Puebla', '72001', 'México'),
-(6, 'Residencial', 'Blvd. Industrial 10', 'Tijuana', 'Baja California', '22000', 'México'),
-(6, 'Fiscal', 'Av. Empresarial 500', 'Tijuana', 'Baja California', '22001', 'México');
-GO
-  </code></pre>
-</section>
-
-<section class="card">
-  <h2>Registros de la tabla "Clientes_Fiscal"</h2>
-  <pre><code>
-INSERT INTO Clientes_Fiscal (
-    ClienteID,
+    Primer_Nombre,
+    Apellido_Paterno,
     RFC,
-    RazonSocial
+    Tipo_Persona,
+    Numero_Telefono,
+    Calle,
+    Colonia,
+    Numero_Exterior,
+    Codigo_Postal
 ) VALUES
-(1, 'PEGA880101XXX', 'Juan Pérez Gómez'),
-(2, 'TSO123456ABC', 'Tech Solutions S.A. de C.V.'),
-(3, 'LOHM900101XXX', 'María López Hernández'),
-(4, 'INN123456DEF', 'Innovatech S.A. de C.V.'),
-(5, 'RACS850202XXX', 'Carlos Ramírez Santos'),
-(6, 'CDE654321GHI', 'Construcciones Delta S.A. de C.V.');
+('Pedro', 'Martínez', 'PEDM920101B42', 'Fisica', '555-1234', 'Av. Insurgentes', 'Roma', '123', '06700');
+GO
+  </code></pre>
+</section>
+
+<section class="card">
+  <h2>Registros de la tabla "Comentarios"</h2>
+  <pre><code>
+INSERT INTO Comentarios (
+    Id_Cliente,
+    Fecha,
+    Comentario
+) VALUES
+(1, '2025-09-25', 'Excelente servicio en la recepción');
 GO
   </code></pre>
 </section>
 
 
+
 <section class="card">
-      <h2>Comprobación de los resgistros</h2>
-      <p class="lead">select * from Clientes
-select * from Contactos_Cliente
-select * from Direcciones_Cliente
-select * from Clientes_Fiscal</p>
-      <img src="../Imagenes/RegistrosClientes.jpg" alt="Registros tabla Proveedor" width="1000" height="300" style="display: block; margin: 0 auto;">
+      
+      <img src="../Imagenes/ClientesRegistro.jpg" alt="Registros tabla Proveedor" width="1000" height="300" style="display: block; margin: 0 auto;">
 </section> 
 
     <!-- VOLVER ARRIBA -->

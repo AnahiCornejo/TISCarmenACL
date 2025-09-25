@@ -163,13 +163,15 @@
 
   <!-- CONTENIDO PRINCIPAL -->
   <main class="wrap">
-    <h1>Inventario de la Gestión del hotel parís</h1>
-    <p class="lead">Sistema de control y administración para productos, usuarios y operaciones clave del hotel.</p>
+    <h1>Facturación del hotel parís</h1>
+    <p class="lead">Sistema de facturación del hotel, que permite generar y 
+      gestionar facturas electrónicas de manera segura, vinculando gastos y servicios de los clientes para un control eficiente de los ingresos.</p>
     <!-- DESCRIPCIÓN DEL SISTEMA -->
     <section class="card">
-      <h2>Clientes</h2>
+      <h2>Facturación</h2>
       <ul>
-        </li>El subtema de inventario es una base de datos para registrar y controlar los productos de la gestión hotelera. Su objetivo principal es registrar los procesos (como las entradas y salidas de stock), mantener un seguimiento preciso en tiempo real de la cantidad de productos disponibles.</li>
+        </li>Permitir la generación, registro y gestión de facturas de manera eficiente y precisa, vinculando los gastos de los clientes, servicios y reservaciones, asegurando cumplimiento fiscal 
+        y facilitando la consulta, emisión y seguimiento de comprobantes electrónicos dentro del sistema de facturación del hotel.</li>
       </ul>
     </section>
 
@@ -182,51 +184,95 @@
       </div>
     </section>
 
-    <!-- FUNCIONES DEL GERENTE -->
-    <section class="card">
-      <h2>Funciones del Gerente</h2>
+  <section class="card">
+  <h2>Funciones del Dueño</h2>
+  <ul>
+    <li><strong>Visualizar información completa de las facturas</strong> utilizando:
       <ul>
-        <li><strong>Ingresar un producto</strong> utilizando:
-          <ul>
-            <li>ID del producto</li>
-            <li>Descripción del producto</li>
-            <li>Cantidad del producto</li>
-            <li>Precio de venta</li>
-            <li>Caducidad</li>
-            <li>Marca</li>
-            <li>Proveedor</li>
-          </ul>
-        </li>
-        <li><strong>Visualizar un producto</strong> utilizando: ID del producto, Nombre del producto.</li>
-        <li><strong>Eliminar un producto</strong> utilizando: ID del producto, Nombre del producto.</li>
-        <li><strong>Editar un producto</strong> utilizando: ID del producto, Nombre del producto.</li>
+        <li>ID de la factura</li>
+        <li>Nombre del cliente</li>
+        <li>RFC del emisor</li>
+        <li>Fecha y hora de emisión</li>
+        <li>Total de la factura</li>
       </ul>
-    </section>
+    </li>
+    <li><strong>Autorizar o modificar registros de facturas</strong> utilizando:
+      <ul>
+        <li>Datos del cliente</li>
+        <li>Detalles de gastos y productos</li>
+        <li>Fecha y hora de emisión</li>
+      </ul>
+    </li>
+    <li><strong>Consultar reportes generales</strong> de facturación, ingresos y gastos.</li>
+    <li><strong>Eliminar una factura</strong> utilizando:
+      <ul>
+        <li>ID de la factura</li>
+        <li>Nombre del cliente</li>
+      </ul>
+    </li>
+  </ul>
+</section>
 
-    <!-- FUNCIONES DEL EMPLEADO -->
-    <section class="card">
-      <h2>Funciones del Empleado</h2>
+<section class="card">
+  <h2>Funciones del Gerente</h2>
+  <ul>
+    <li><strong>Ingresar una factura</strong> utilizando:
       <ul>
-        <li><strong>Ingresar un producto</strong> utilizando:
-          <ul>
-            <li>ID del producto</li>
-            <li>Descripción del producto</li>
-            <li>Cantidad del producto</li>
-            <li>Precio de venta</li>
-            <li>Caducidad</li>
-            <li>Marca</li>
-            <li>Proveedor</li>
-          </ul>
-        </li>
-        <li><strong>Visualizar un producto</strong> utilizando: ID del producto, Nombre del producto.</li>
+        <li>ID de la factura</li>
+        <li>Datos del cliente (Nombre, RFC)</li>
+        <li>Detalle de gastos y productos (Cantidad, Precio Unitario, Subtotal, IVA, Total)</li>
+        <li>Fecha y hora de emisión</li>
       </ul>
-    </section>
+    </li>
+    <li><strong>Visualizar una factura</strong> utilizando:
+      <ul>
+        <li>ID de la factura</li>
+        <li>Nombre del cliente</li>
+        <li>Total</li>
+      </ul>
+    </li>
+    <li><strong>Eliminar una factura</strong> utilizando:
+      <ul>
+        <li>ID de la factura</li>
+        <li>Nombre del cliente</li>
+      </ul>
+    </li>
+    <li><strong>Editar una factura</strong> utilizando:
+      <ul>
+        <li>ID de la factura</li>
+        <li>Nombre del cliente (para modificar datos de gastos, productos o totales)</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>Funciones del Empleado</h2>
+  <ul>
+    <li><strong>Ingresar datos de facturación</strong> utilizando:
+      <ul>
+        <li>ID de la factura</li>
+        <li>Datos del cliente</li>
+        <li>Detalle de productos o servicios</li>
+      </ul>
+    </li>
+    <li><strong>Visualizar una factura</strong> utilizando:
+      <ul>
+        <li>ID de la factura</li>
+        <li>Nombre del cliente</li>
+        <li>Total</li>
+        <li>Fecha y hora de emisión</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
   <section class="card">
   <h2>Diseño de la base de datos del subsistema</h2>
   <div class="fields">
-    <a href="DiagramaClientes.html" class="chip">📊 Diagrama de la base de datos</a>
-    <a href="TablasClientesSQL.html" class="chip">🧩 Código SQL: Crear tablas</a>
-    <a href="RegistrosClientes.html" class="chip">📝 Código SQL: Agregar registros</a>
+    <a href="../Factura/DiagramaFacturacion.html" class="chip">📊 Diagrama de la base de datos</a>
+    <a href="../Factura/TablasFacturacion.html" class="chip">🧩 Código SQL: Crear tablas</a>
+    <a href="../Factura/RegistrosFacturacion.html" class="chip">📝 Código SQL: Agregar registros</a>
   </div>
 </section>
 

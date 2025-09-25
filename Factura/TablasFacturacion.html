@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hotel – Gestión (Clientes, Empleados y Facturación)</title>
+  <title>Hotel – Gestión (Inventario, Proveedores, Horarios, Reservaciones, Habitaciones)</title>
   <style>
     :root {
       --bg: #0b1220;
@@ -161,26 +161,27 @@
 
   <!-- CONTENIDO PRINCIPAL -->
   <main class="wrap">
-    <h1>Codigó SQL aplicado en los Clientes del Hotel Paris.</h1>
-    <p class="lead"> Desarrollar un sistema de control y administración de clientes para el hotel,
-         que permita registrar y gestionar de forma segura y eficiente</p>
+    <h1>Codigó SQL de Facturación del Hotel Paris.</h1>
+    <p class="lead">Sistema de facturación del hotel, que permite generar y gestionar facturas electrónicas de manera segura, 
+        vinculando gastos y servicios de los clientes para un control eficiente de los ingresos.</p>
     <!-- DESCRIPCIÓN DEL SISTEMA -->
     <section class="card">
-      <h2>Clientes</h2>
+      <h2>Facturación</h2>
       <ul>
-        </li>Desarrollar una base de datos relacional que centralice la información de clientes y comentarios relacionados, implementando integridad referencial mediante claves primarias y foráneas para garantizar la consistencia de los datos. La base permitirá la gestión eficiente de registros de clientes, sus datos fiscales, direcciones, y comentarios vinculados a empleados, optimizando consultas y facilitando la escalabilidad del sistema.</li>
+        </li>Permitir la generación, registro y gestión de facturas de manera eficiente y precisa, vinculando los gastos de los clientes, servicios y reservaciones, asegurando cumplimiento fiscal 
+        y facilitando la consulta, emisión y seguimiento de comprobantes electrónicos dentro del sistema de facturación del hotel.</li>
       </ul>
     </section>
 
-   <!-- CODIGO SQL PARA LAS TABLAS DE CLIENTES -->
+   <!-- BASE DE DATOS Y TABLAS DEL HOTEL -->
 <section class="card">
-  <h2>Código SQL para las tablas de Clientes</h2>
-</section> 
+  <h2>Código SQL para las tablas</h2>
+</section>
 
 <section class="card">
   <h2>Creación de la base de datos</h2>
   <pre><code>
-CREATE DATABASE HotelClientes;
+CREATE DATABASE HotelFactura;
 GO
   </code></pre>
 </section>
@@ -188,7 +189,7 @@ GO
 <section class="card">
   <h2>Seleccionar la base de datos</h2>
   <pre><code>
-USE HotelClientes;
+USE HotelFactura;
 GO
   </code></pre>
 </section>
@@ -210,32 +211,66 @@ CREATE TABLE Clientes (
     Colonia NVARCHAR(100) NOT NULL,
     Numero_Exterior NVARCHAR(10) NOT NULL,
     Numero_Interior NVARCHAR(10) NULL,
-    Codigo_Postal NVARCHAR(5) NOT NULL,
-    Fecha_Nacimiento DATE NULL,
-    Fecha_Registro DATE DEFAULT GETDATE()
+    Codigo_Postal NVARCHAR(5) NOT NULL
 );
-GO
   </code></pre>
 </section>
 
 <section class="card">
-  <h2>Crear tabla "Comentarios"</h2>
+  <h2>Crear tabla "Factura"</h2>
   <pre><code>
-CREATE TABLE Comentarios (
-    Id_Comentario INT IDENTITY(1,1) PRIMARY KEY,
-    Id_Cliente INT NOT NULL,
-    Id_Empleado INT NULL,  -- Comentario relacionado con un empleado específico
-    Fecha DATE NOT NULL,
-    Comentario NVARCHAR(255) NOT NULL,
-    Tipo_Comentario NVARCHAR(20) NULL,
-    Respuesta NVARCHAR(255) NULL,
-    FOREIGN KEY (Id_Cliente) REFERENCES Clientes(Id_Cliente),
-    FOREIGN KEY (Id_Empleado) REFERENCES Empleados(Id_Empleado)  -- Relación con el empleado que fue comentado
+CREATE TABLE Factura (
+    ID_Factura INT IDENTITY(1,1) PRIMARY KEY,
+    RFC_Emisor NVARCHAR(13) NOT NULL,
+    Nombre_Emisor NVARCHAR(100) NOT NULL,
+    Regimen_Fiscal NVARCHAR(50) NOT NULL,
+    Uso_CFDI NVARCHAR(50) NOT NULL
 );
-GO
   </code></pre>
 </section>
 
+<section class="card">
+  <h2>Crear tabla "Gastos"</h2>
+  <pre><code>
+CREATE TABLE Gastos (
+    ID_Gasto INT IDENTITY(1,1) PRIMARY KEY,
+    ID_Servicio INT NULL,
+    ID_Reservacion INT NULL,
+    ID_Restaurante INT NULL,
+    ID_Producto INT NULL,
+    Cantidad_Producto INT NULL,
+    SubTotal DECIMAL(10,2) NOT NULL,
+    IVA DECIMAL(10,2) NOT NULL,
+    Total DECIMAL(10,2) NOT NULL
+);
+  </code></pre>
+</section>
+
+<section class="card">
+  <h2>Crear tabla "Facturar"</h2>
+  <pre><code>
+CREATE TABLE Facturar (
+    ID_Folio INT IDENTITY(1,1) PRIMARY KEY,
+    RFC_Emisor NVARCHAR(13) NOT NULL,
+    Nombre_Emisor NVARCHAR(100) NOT NULL,
+    Numero_Serie NVARCHAR(20) NOT NULL,
+    Fecha DATE NOT NULL,
+    Hora TIME NOT NULL,
+    Efecto_Comprobante NVARCHAR(50) NOT NULL,
+    Regimen_Fiscal NVARCHAR(50) NOT NULL,
+    Exportacion NVARCHAR(10) NOT NULL,
+
+    -- Relaciones
+    ID_Gasto INT NOT NULL,
+    ID_Factura INT NOT NULL,
+    Id_Cliente INT NOT NULL,
+
+    FOREIGN KEY (ID_Gasto) REFERENCES Gastos(ID_Gasto),
+    FOREIGN KEY (ID_Factura) REFERENCES Factura(ID_Factura),
+    FOREIGN KEY (Id_Cliente) REFERENCES Clientes(Id_Cliente)
+);
+  </code></pre>
+</section>
 
     <!-- VOLVER ARRIBA -->
   </main>

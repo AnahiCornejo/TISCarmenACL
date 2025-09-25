@@ -162,20 +162,19 @@
   <!-- CONTENIDO PRINCIPAL -->
   <main class="wrap">
     <h1>Diagrama en la base de datos de Clientes</h1>
-    <p class="lead">Sistema de control y administración de clientes del hotel, que registra datos personales, contactos, direcciones y datos fiscales, gestionando la información de forma segura y eficiente para mejorar la atención al cliente.</p>
+    <p class="lead"> Desarrollar un sistema de control y administración de clientes para el hotel, que permita registrar y gestionar de forma segura y eficiente</p>
     <!-- DESCRIPCIÓN DEL SISTEMA -->
     <section class="card">
       <h2>Clientes</h2>
       <ul>
-        </li>Diseñar y administrar un sistema de almacenamiento estructurado que permita registrar, organizar y mantener actualizada la información de los clientes, incluyendo sus datos personales, contactos, direcciones y datos fiscales, con el fin de facilitar la gestión comercial,
-         asegurar el cumplimiento de requisitos legales y de facturación, y mejorar la atención al cliente.</li>
+        </li>Desarrollar una base de datos relacional que centralice la información de clientes y comentarios relacionados, implementando integridad referencial mediante claves primarias y foráneas para garantizar la consistencia de los datos. La base permitirá la gestión eficiente de registros de clientes, sus datos fiscales, direcciones, y comentarios vinculados a empleados, optimizando consultas y facilitando la escalabilidad del sistema.</li>
       </ul>
     </section>
 
     <!-- USUARIOS DEL SISTEMA -->
     <section class="card">
       <h2>Diagrama de base de datos </h2>
-      <img src="../Imagenes/DiegramaClientes.png" alt="Descripción de la imagen" width="800" height="400" style="display: block; margin: 0 auto;">
+      <img src="../Imagenes/Clientes.jpg" alt="Descripción de la imagen" width="800" height="400" style="display: block; margin: 0 auto;">
     </section> 
 
 <section class="card">
@@ -185,200 +184,166 @@
     apoyando la operación diaria del hotel y facilitando la atención al cliente y la gestión de información fiscal y de contacto.
   </p>
 
-  <h3>Explicación de cada campo - Clientes</h3>
-  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
-    <thead>
-      <tr>
-        <th>Campo</th>
-        <th>Tipo de dato</th>
-        <th>Permitir valores nulos</th>
-        <th>Propósito y Justificación</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>ClienteID</td>
-        <td>int (IDENTITY)</td>
-        <td>No</td>
-        <td>Identificador único del cliente; clave primaria para diferenciar registros.</td>
-      </tr>
-      <tr>
-        <td>Nombre</td>
-        <td>nvarchar(100)</td>
-        <td>No</td>
-        <td>Almacena el nombre del cliente para identificación.</td>
-      </tr>
-      <tr>
-        <td>Apelli_Paterno</td>
-        <td>nvarchar(100)</td>
-        <td>No</td>
-        <td>Primer apellido del cliente, necesario para identificación formal.</td>
-      </tr>
-      <tr>
-        <td>Apellido_Materno</td>
-        <td>nvarchar(100)</td>
-        <td>No</td>
-        <td>Segundo apellido del cliente, permite identificación completa.</td>
-      </tr>
-      <tr>
-        <td>FechaRegistro</td>
-        <td>datetime</td>
-        <td>Sí (DEFAULT GETDATE())</td>
-        <td>Fecha en que se registró el cliente; útil para auditoría y seguimiento histórico.</td>
-      </tr>
-      <tr>
-        <td>TipoCliente</td>
-        <td>nvarchar(50)</td>
-        <td>Sí</td>
-        <td>Clasificación del cliente (Regular, VIP, etc.) para segmentación y control.</td>
-      </tr>
-      <tr>
-        <td>TipoPersona</td>
-        <td>nvarchar(20)</td>
-        <td>No</td>
-        <td>Define si el cliente es “Física” o “Moral”; necesario para fines fiscales.</td>
-      </tr>
-      <tr>
-        <td>Notas</td>
-        <td>nvarchar(250)</td>
-        <td>Sí</td>
-        <td>Observaciones adicionales sobre el cliente (preferencias, comentarios internos, etc.).</td>
-      </tr>
-    </tbody>
-  </table>
+ <h3>Explicación de cada campo - Clientes</h3>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th>Campo</th>
+      <th>Tipo de dato</th>
+      <th>Permitir valores nulos</th>
+      <th>Propósito y Justificación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Id_Cliente</td>
+      <td>int (IDENTITY)</td>
+      <td>No</td>
+      <td>Identificador único del cliente; clave primaria autoincremental.</td>
+    </tr>
+    <tr>
+      <td>Primer_Nombre</td>
+      <td>nvarchar(50)</td>
+      <td>No</td>
+      <td>Primer nombre del cliente, necesario para su identificación.</td>
+    </tr>
+    <tr>
+      <td>Segundo_Nombre</td>
+      <td>nvarchar(50)</td>
+      <td>Sí</td>
+      <td>Segundo nombre opcional del cliente. No todos lo tienen.</td>
+    </tr>
+    <tr>
+      <td>Apellido_Paterno</td>
+      <td>nvarchar(50)</td>
+      <td>No</td>
+      <td>Apellido paterno del cliente, parte importante de su identificación.</td>
+    </tr>
+    <tr>
+      <td>Apellido_Materno</td>
+      <td>nvarchar(50)</td>
+      <td>Sí</td>
+      <td>Apellido materno del cliente. Puede omitirse si no aplica.</td>
+    </tr>
+    <tr>
+      <td>RFC</td>
+      <td>nvarchar(13)</td>
+      <td>No</td>
+      <td>Registro Federal de Contribuyentes. Identificador fiscal único.</td>
+    </tr>
+    <tr>
+      <td>Tipo_Persona</td>
+      <td>nvarchar(10)</td>
+      <td>No</td>
+      <td>Define si el cliente es "Física" o "Moral", importante para fines fiscales.</td>
+    </tr>
+    <tr>
+      <td>Numero_Telefono</td>
+      <td>nvarchar(15)</td>
+      <td>No</td>
+      <td>Teléfono del cliente. Medio principal de contacto.</td>
+    </tr>
+    <tr>
+      <td>Correo</td>
+      <td>nvarchar(100)</td>
+      <td>Sí</td>
+      <td>Correo electrónico del cliente. Se usa para notificaciones.</td>
+    </tr>
+    <tr>
+      <td>Calle</td>
+      <td>nvarchar(100)</td>
+      <td>No</td>
+      <td>Nombre de la calle del domicilio del cliente.</td>
+    </tr>
+    <tr>
+      <td>Colonia</td>
+      <td>nvarchar(100)</td>
+      <td>No</td>
+      <td>Colonia o barrio en el que vive el cliente.</td>
+    </tr>
+    <tr>
+      <td>Numero_Exterior</td>
+      <td>nvarchar(10)</td>
+      <td>No</td>
+      <td>Número exterior del domicilio del cliente.</td>
+    </tr>
+    <tr>
+      <td>Numero_Interior</td>
+      <td>nvarchar(10)</td>
+      <td>Sí</td>
+      <td>Número interior del domicilio, si aplica.</td>
+    </tr>
+    <tr>
+      <td>Codigo_Postal</td>
+      <td>nvarchar(5)</td>
+      <td>No</td>
+      <td>Código postal del domicilio. Útil para ubicación geográfica.</td>
+    </tr>
+    <tr>
+      <td>Fecha_Nacimiento</td>
+      <td>date</td>
+      <td>Sí</td>
+      <td>Fecha de nacimiento del cliente. Relevante para segmentación.</td>
+    </tr>
+    <tr>
+      <td>Fecha_Registro</td>
+      <td>date (DEFAULT GETDATE())</td>
+      <td>No</td>
+      <td>Fecha de alta del cliente en el sistema. Se asigna automáticamente.</td>
+    </tr>
+  </tbody>
+</table>
 
-  <h3>Explicación de cada campo - Contactos_Cliente</h3>
-  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
-    <thead>
-      <tr>
-        <th>Campo</th>
-        <th>Tipo de dato</th>
-        <th>Permitir valores nulos</th>
-        <th>Propósito y Justificación</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>ContactoID</td>
-        <td>int (IDENTITY)</td>
-        <td>No</td>
-        <td>Identificador único de cada contacto; clave primaria.</td>
-      </tr>
-      <tr>
-        <td>ClienteID</td>
-        <td>int (FK)</td>
-        <td>No</td>
-        <td>Relaciona el contacto con el cliente correspondiente.</td>
-      </tr>
-      <tr>
-        <td>TipoContacto</td>
-        <td>nvarchar(20)</td>
-        <td>No</td>
-        <td>Define si el contacto es “Teléfono” o “Correo”.</td>
-      </tr>
-      <tr>
-        <td>Valor</td>
-        <td>nvarchar(50)</td>
-        <td>No</td>
-        <td>Almacena el número de teléfono o correo electrónico del cliente.</td>
-      </tr>
-    </tbody>
-  </table>
+<h3>Explicación de cada campo - Comentarios</h3>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th>Campo</th>
+      <th>Tipo de dato</th>
+      <th>Permitir valores nulos</th>
+      <th>Propósito y Justificación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Id_Comentario</td>
+      <td>int (IDENTITY)</td>
+      <td>No</td>
+      <td>Identificador único del comentario. Clave primaria autoincremental.</td>
+    </tr>
+    <tr>
+      <td>Id_Cliente</td>
+      <td>int (FK)</td>
+      <td>No</td>
+      <td>Relaciona el comentario con el cliente que lo emitió.</td>
+    </tr>
+    <tr>
+      <td>Fecha</td>
+      <td>date</td>
+      <td>No</td>
+      <td>Fecha en que se registró el comentario.</td>
+    </tr>
+    <tr>
+      <td>Comentario</td>
+      <td>nvarchar(255)</td>
+      <td>No</td>
+      <td>Texto del comentario realizado por el cliente.</td>
+    </tr>
+    <tr>
+      <td>Tipo_Comentario</td>
+      <td>nvarchar(20)</td>
+      <td>Sí</td>
+      <td>Clasificación del comentario (ej. Queja, Sugerencia, Felicitación).</td>
+    </tr>
+    <tr>
+      <td>Respuesta</td>
+      <td>nvarchar(255)</td>
+      <td>Sí</td>
+      <td>Respuesta que se dio al comentario por parte del personal.</td>
+    </tr>
+  </tbody>
+</table>
 
-  <h3>Explicación de cada campo - Direcciones_Cliente</h3>
-  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
-    <thead>
-      <tr>
-        <th>Campo</th>
-        <th>Tipo de dato</th>
-        <th>Permitir valores nulos</th>
-        <th>Propósito y Justificación</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>DireccionID</td>
-        <td>int (IDENTITY)</td>
-        <td>No</td>
-        <td>Identificador único de cada dirección; clave primaria.</td>
-      </tr>
-      <tr>
-        <td>ClienteID</td>
-        <td>int (FK)</td>
-        <td>No</td>
-        <td>Relaciona la dirección con el cliente correspondiente.</td>
-      </tr>
-      <tr>
-        <td>TipoDireccion</td>
-        <td>nvarchar(20)</td>
-        <td>Sí</td>
-        <td>Clasificación de la dirección (Fiscal o Residencial).</td>
-      </tr>
-      <tr>
-        <td>Calle</td>
-        <td>nvarchar(100)</td>
-        <td>Sí</td>
-        <td>Nombre de la calle, parte de la dirección completa.</td>
-      </tr>
-      <tr>
-        <td>Ciudad</td>
-        <td>nvarchar(50)</td>
-        <td>Sí</td>
-        <td>Ciudad de la dirección.</td>
-      </tr>
-      <tr>
-        <td>Estado</td>
-        <td>nvarchar(50)</td>
-        <td>Sí</td>
-        <td>Estado o provincia de la dirección.</td>
-      </tr>
-      <tr>
-        <td>CodigoPostal</td>
-        <td>nvarchar(10)</td>
-        <td>Sí</td>
-        <td>Código postal de la dirección.</td>
-      </tr>
-      <tr>
-        <td>Pais</td>
-        <td>nvarchar(50)</td>
-        <td>Sí</td>
-        <td>País de la dirección.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h3>Explicación de cada campo - Clientes_Fiscal</h3>
-  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
-    <thead>
-      <tr>
-        <th>Campo</th>
-        <th>Tipo de dato</th>
-        <th>Permitir valores nulos</th>
-        <th>Propósito y Justificación</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>ClienteID</td>
-        <td>int (PK, FK)</td>
-        <td>No</td>
-        <td>Relaciona los datos fiscales con el cliente correspondiente.</td>
-      </tr>
-      <tr>
-        <td>RFC</td>
-        <td>nvarchar(15)</td>
-        <td>No</td>
-        <td>Registro Federal de Contribuyentes, necesario para facturación.</td>
-      </tr>
-      <tr>
-        <td>RazonSocial</td>
-        <td>nvarchar(100)</td>
-        <td>Sí</td>
-        <td>Nombre fiscal de la empresa o persona moral.</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
 
 
 

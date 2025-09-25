@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hotel – Gestión (Clienes, Empleados y Facturación)</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #121a2b;
+      --muted: #8aa0c3;
+      --text: #e7ecf5;
+      --accent: #4ea1ff;
+      --accent-2: #79f2d0;
+      --border: #24324f;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(78,161,255,.25), transparent 60%),
+                  radial-gradient(1000px 700px at 0% 110%, rgba(121,242,208,.2), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,18,32,.8);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .wrap {
+      max-width: 1100px;
+      margin-inline: auto;
+      padding: 18px 20px;
+    }
+    nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+    .navlinks {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--text);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      transition: background 0.3s;
+    }
+    .chip:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    main {
+      padding: 28px 20px;
+    }
+    h1 {
+      font-size: clamp(24px, 3.5vw, 40px);
+      line-height: 1.05;
+      margin: 10px 0 6px;
+    }
+    p.lead {
+      color: var(--muted);
+      max-width: 72ch;
+    }
+    .grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 22px;
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.15);
+      margin-top: 22px;
+    }
+    .card h2 {
+      font-size: clamp(18px, 2.4vw, 24px);
+      margin: 0 0 10px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    section {
+      scroll-margin-top: 90px;
+    }
+    .fields {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 12px;
+    }
+    .field {
+      padding: 10px 12px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .desc {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .anchor {
+      display: inline-block;
+      margin-top: 22px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .anchor:hover {
+      text-decoration: underline;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      background: rgba(255,255,255,.02);
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- HEADER CON NAVEGACIÓN -->
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand">Hotel – Gestión</div>
+      <div class="navlinks">
+        <a href="../Empleados/Empleados.html" style="color: white;">Regresar</a>
+        <a class="chip" href="../index.html" style="color: white;">🏠 Inicio</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="wrap">
+    <h1>Diagrama en la base de datos de Facturación</h1>
+    <p class="lead">Sistema de facturación del hotel, que permite generar y gestionar facturas electrónicas de manera segura, vinculando gastos y servicios de los clientes para un control eficiente de los ingresos.</p>
+    <!-- DESCRIPCIÓN DEL SISTEMA -->
+    <section class="card">
+      <h2>Facturación</h2>
+      <ul>
+        </li>Permitir la generación, registro y gestión de facturas de manera eficiente y precisa, vinculando los gastos de los clientes, servicios y reservaciones, asegurando cumplimiento fiscal 
+        y facilitando la consulta, emisión y seguimiento de comprobantes electrónicos dentro del sistema de facturación del hotel.</li>
+      </ul>
+    </section>
+
+    <!-- USUARIOS DEL SISTEMA -->
+    <section class="card">
+      <h2>Diagrama de base de datos </h2>
+      <img src="../Imagenes/DiegramaFacturar.jpg" alt="Descripción de la imagen" width="800" height="400" style="display: block; margin: 0 auto;">
+    </section> 
+
+<section class="card">
+  <h2>Descripción de Pertinencia de la Arquitectura de la Base de Datos</h2>
+  <p>
+    La arquitectura de la base de datos del sistema de facturación del hotel ha sido diseñada para garantizar organización, eficiencia y escalabilidad en la gestión de información crítica. Su estructura permite almacenar, relacionar y consultar de manera rápida y segura los datos de clientes, reservaciones, facturas y detalles de servicios, facilitando la operación diaria del hotel.
+  </p>
+
+  <h3>Explicación de cada campo - Clientes</h3>
+  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Tipo de dato</th>
+        <th>Permitir valores nulos</th>
+        <th>Propósito y Justificación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Id_Cliente</td>
+        <td>INT IDENTITY(1,1)</td>
+        <td>No</td>
+        <td>Clave primaria única para identificar cada cliente.</td>
+      </tr>
+      <tr>
+        <td>Primer_Nombre</td>
+        <td>NVARCHAR(50)</td>
+        <td>No</td>
+        <td>Nombre principal del cliente, obligatorio para identificación.</td>
+      </tr>
+      <tr>
+        <td>Segundo_Nombre</td>
+        <td>NVARCHAR(50)</td>
+        <td>Sí</td>
+        <td>Segundo nombre del cliente, opcional.</td>
+      </tr>
+      <tr>
+        <td>Apellido_Paterno</td>
+        <td>NVARCHAR(50)</td>
+        <td>No</td>
+        <td>Apellido paterno, obligatorio para identificación completa.</td>
+      </tr>
+      <tr>
+        <td>Apellido_Materno</td>
+        <td>NVARCHAR(50)</td>
+        <td>Sí</td>
+        <td>Apellido materno, opcional según cultura.</td>
+      </tr>
+      <tr>
+        <td>RFC</td>
+        <td>NVARCHAR(13)</td>
+        <td>No</td>
+        <td>Registro Federal de Contribuyentes único para cada cliente.</td>
+      </tr>
+      <tr>
+        <td>Tipo_Persona</td>
+        <td>NVARCHAR(10)</td>
+        <td>No</td>
+        <td>Indica si el cliente es 'Fisica' o 'Moral'.</td>
+      </tr>
+      <tr>
+        <td>Numero_Telefono</td>
+        <td>NVARCHAR(15)</td>
+        <td>No</td>
+        <td>Teléfono de contacto principal.</td>
+      </tr>
+      <tr>
+        <td>Correo</td>
+        <td>NVARCHAR(100)</td>
+        <td>Sí</td>
+        <td>Email del cliente, útil para facturación electrónica.</td>
+      </tr>
+      <tr>
+        <td>Calle</td>
+        <td>NVARCHAR(100)</td>
+        <td>No</td>
+        <td>Calle de domicilio para facturación.</td>
+      </tr>
+      <tr>
+        <td>Colonia</td>
+        <td>NVARCHAR(100)</td>
+        <td>No</td>
+        <td>Colonia de domicilio, necesaria para dirección completa.</td>
+      </tr>
+      <tr>
+        <td>Numero_Exterior</td>
+        <td>NVARCHAR(10)</td>
+        <td>No</td>
+        <td>Número exterior del domicilio.</td>
+      </tr>
+      <tr>
+        <td>Numero_Interior</td>
+        <td>NVARCHAR(10)</td>
+        <td>Sí</td>
+        <td>Número interior del domicilio, opcional.</td>
+      </tr>
+      <tr>
+        <td>Codigo_Postal</td>
+        <td>NVARCHAR(5)</td>
+        <td>No</td>
+        <td>Código postal del domicilio.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Explicación de cada campo - Factura</h3>
+  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Tipo de dato</th>
+        <th>Permitir valores nulos</th>
+        <th>Propósito y Justificación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ID_Factura</td>
+        <td>INT IDENTITY(1,1)</td>
+        <td>No</td>
+        <td>Clave primaria única de la factura.</td>
+      </tr>
+      <tr>
+        <td>RFC_Emisor</td>
+        <td>NVARCHAR(13)</td>
+        <td>No</td>
+        <td>RFC de quien emite la factura, obligatorio para registro fiscal.</td>
+      </tr>
+      <tr>
+        <td>Nombre_Emisor</td>
+        <td>NVARCHAR(100)</td>
+        <td>No</td>
+        <td>Nombre de quien emite la factura.</td>
+      </tr>
+      <tr>
+        <td>Regimen_Fiscal</td>
+        <td>NVARCHAR(50)</td>
+        <td>No</td>
+        <td>Régimen fiscal del emisor.</td>
+      </tr>
+      <tr>
+        <td>Uso_CFDI</td>
+        <td>NVARCHAR(50)</td>
+        <td>No</td>
+        <td>Uso del comprobante fiscal.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Explicación de cada campo - Gastos</h3>
+  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Tipo de dato</th>
+        <th>Permitir valores nulos</th>
+        <th>Propósito y Justificación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ID_Gasto</td>
+        <td>INT IDENTITY(1,1)</td>
+        <td>No</td>
+        <td>Clave primaria del gasto.</td>
+      </tr>
+      <tr>
+        <td>ID_Servicio</td>
+        <td>INT</td>
+        <td>Sí</td>
+        <td>Referencia a un servicio asociado, opcional por ahora.</td>
+      </tr>
+      <tr>
+        <td>ID_Reservacion</td>
+        <td>INT</td>
+        <td>Sí</td>
+        <td>Referencia a la reservación que generó el gasto.</td>
+      </tr>
+      <tr>
+        <td>ID_Restaurante</td>
+        <td>INT</td>
+        <td>Sí</td>
+        <td>Referencia a restaurante, opcional.</td>
+      </tr>
+      <tr>
+        <td>ID_Producto</td>
+        <td>INT</td>
+        <td>Sí</td>
+        <td>Referencia a producto vendido, opcional.</td>
+      </tr>
+      <tr>
+        <td>Cantidad_Producto</td>
+        <td>INT</td>
+        <td>Sí</td>
+        <td>Cantidad de producto.</td>
+      </tr>
+      <tr>
+        <td>SubTotal</td>
+        <td>DECIMAL(10,2)</td>
+        <td>No</td>
+        <td>Monto antes de impuestos.</td>
+      </tr>
+      <tr>
+        <td>IVA</td>
+        <td>DECIMAL(10,2)</td>
+        <td>No</td>
+        <td>Impuesto al valor agregado.</td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td>DECIMAL(10,2)</td>
+        <td>No</td>
+        <td>Total con impuestos.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Explicación de cada campo - Facturar</h3>
+  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Tipo de dato</th>
+        <th>Permitir valores nulos</th>
+        <th>Propósito y Justificación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ID_Folio</td>
+        <td>INT IDENTITY(1,1)</td>
+        <td>No</td>
+        <td>Clave primaria del folio de facturación.</td>
+      </tr>
+      <tr>
+        <td>RFC_Emisor</td>
+        <td>NVARCHAR(13)</td>
+        <td>No</td>
+        <td>RFC del emisor.</td>
+      </tr>
+      <tr>
+        <td>Nombre_Emisor</td>
+        <td>NVARCHAR(100)</td>
+        <td>No</td>
+        <td>Nombre del emisor.</td>
+      </tr>
+      <tr>
+        <td>Numero_Serie</td>
+        <td>NVARCHAR(20)</td>
+        <td>No</td>
+        <td>Número de serie de la factura.</td>
+      </tr>
+      <tr>
+        <td>Fecha</td>
+        <td>DATE</td>
+        <td>No</td>
+        <td>Fecha de emisión.</td>
+      </tr>
+      <tr>
+        <td>Hora</td>
+        <td>TIME</td>
+        <td>No</td>
+        <td>Hora de emisión.</td>
+      </tr>
+      <tr>
+        <td>Efecto_Comprobante</td>
+        <td>NVARCHAR(50)</td>
+        <td>No</td>
+        <td>Tipo de comprobante (ingreso, egreso, etc.).</td>
+      </tr>
+      <tr>
+        <td>Regimen_Fiscal</td>
+        <td>NVARCHAR(50)</td>
+        <td>No</td>
+        <td>Régimen fiscal del emisor.</td>
+      </tr>
+      <tr>
+        <td>Exportacion</td>
+        <td>NVARCHAR(10)</td>
+        <td>No</td>
+        <td>Indica si es factura de exportación.</td>
+      </tr>
+      <tr>
+        <td>ID_Gasto</td>
+        <td>INT</td>
+        <td>No</td>
+        <td>Referencia al gasto asociado.</td>
+      </tr>
+      <tr>
+        <td>ID_Factura</td>
+        <td>INT</td>
+        <td>No</td>
+        <td>Referencia a la factura base.</td>
+      </tr>
+      <tr>
+        <td>Id_Cliente</td>
+        <td>INT</td>
+        <td>No</td>
+        <td>Referencia al cliente que recibe la factura.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+    <!-- VOLVER ARRIBA -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; gap:18px; padding:18px 20px">
+      <small>© <span id="y"></span> Hotel – Sistema de Gestión</small>
+      <a class="chip" href="#top">↑ Subir</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
