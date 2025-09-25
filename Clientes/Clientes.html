@@ -152,7 +152,7 @@
     <nav>
       <div class="brand">Hotel – Gestión</div>
       <div class="navlinks">
-      <a href="../Clientes/Clientes.html" style="color: white;">Clientes</a>
+        <a href="../Clientes/Clientes.html" style="color: white;">Clientes</a>
         <a href="../Empleados/Empleados.html" style="color: white;">Empleados</a>
         <a href="../Factura/Factura.html.html" style="color: white;">Factura</a>
         <a class="chip" href="../index.html" style="color: white;">🏠 Inicio</a>
@@ -163,13 +163,14 @@
 
   <!-- CONTENIDO PRINCIPAL -->
   <main class="wrap">
-    <h1>Inventario de la Gestión del hotel parís</h1>
-    <p class="lead">Sistema de control y administración para productos, usuarios y operaciones clave del hotel.</p>
+    <h1>clientes del hotel parís</h1>
+    <p class="lead">Sistema de control y administración de clientes del hotel, que registra datos personales, contactos, direcciones y datos fiscales, gestionando la información de forma segura y eficiente para mejorar la atención al cliente.</p>
     <!-- DESCRIPCIÓN DEL SISTEMA -->
     <section class="card">
       <h2>Clientes</h2>
       <ul>
-        </li>El subtema de inventario es una base de datos para registrar y controlar los productos de la gestión hotelera. Su objetivo principal es registrar los procesos (como las entradas y salidas de stock), mantener un seguimiento preciso en tiempo real de la cantidad de productos disponibles.</li>
+        </li>Diseñar y administrar un sistema de almacenamiento estructurado que permita registrar, organizar y mantener actualizada la información de los clientes, incluyendo sus datos personales, contactos, direcciones y datos fiscales, con el fin de facilitar la gestión comercial,
+         asegurar el cumplimiento de requisitos legales y de facturación, y mejorar la atención al cliente.</li>
       </ul>
     </section>
 
@@ -179,54 +180,84 @@
       <div class="fields">
         <div class="field">Empleado</div>
         <div class="field">Gerente</div>
+        <div class="field">Dueño</div>
       </div>
     </section>
 
-    <!-- FUNCIONES DEL GERENTE -->
-    <section class="card">
-      <h2>Funciones del Gerente</h2>
+   <!-- FUNCIONES DEL DUEÑO -->
+<section class="card">
+  <h2>Funciones del Dueño</h2>
+  <ul>
+    <li><strong>Visualizar información completa de los clientes</strong> utilizando:
       <ul>
-        <li><strong>Ingresar un producto</strong> utilizando:
-          <ul>
-            <li>ID del producto</li>
-            <li>Descripción del producto</li>
-            <li>Cantidad del producto</li>
-            <li>Precio de venta</li>
-            <li>Caducidad</li>
-            <li>Marca</li>
-            <li>Proveedor</li>
-          </ul>
-        </li>
-        <li><strong>Visualizar un producto</strong> utilizando: ID del producto, Nombre del producto.</li>
-        <li><strong>Eliminar un producto</strong> utilizando: ID del producto, Nombre del producto.</li>
-        <li><strong>Editar un producto</strong> utilizando: ID del producto, Nombre del producto.</li>
+        <li>ID del cliente</li>
+        <li>Nombre completo</li>
+        <li>Tipo de cliente</li>
+        <li>Tipo de persona</li>
+        <li>Fecha de registro</li>
+        <li>Notas</li>
+        <li>Contactos (Teléfono, Correo)</li>
+        <li>Direcciones (Fiscal, Residencial)</li>
+        <li>Datos fiscales (RFC, Razón Social)</li>
       </ul>
-    </section>
+    </li>
+    <li><strong>Autorizar o modificar registros de clientes</strong> utilizando: 
+      <ul>
+        <li>Tipo de cliente</li>
+        <li>Tipo de persona</li>
+        <li>Notas</li>
+        <li>Direcciones</li>
+        <li>Datos fiscales</li>
+      </ul>
+    </li>
+    <li><strong>Consultar reportes generales</strong> de clientes registrados.</li>
+    <li><strong>Eliminar un cliente</strong> utilizando: ID del cliente, Nombre completo.</li>
+  </ul>
+</section>
 
-    <!-- FUNCIONES DEL EMPLEADO -->
-    <section class="card">
-      <h2>Funciones del Empleado</h2>
+<!-- FUNCIONES DEL GERENTE -->
+<section class="card">
+  <h2>Funciones del Gerente</h2>
+  <ul>
+    <li><strong>Ingresar un cliente</strong> utilizando:
       <ul>
-        <li><strong>Ingresar un producto</strong> utilizando:
-          <ul>
-            <li>ID del producto</li>
-            <li>Descripción del producto</li>
-            <li>Cantidad del producto</li>
-            <li>Precio de venta</li>
-            <li>Caducidad</li>
-            <li>Marca</li>
-            <li>Proveedor</li>
-          </ul>
-        </li>
-        <li><strong>Visualizar un producto</strong> utilizando: ID del producto, Nombre del producto.</li>
+        <li>Nombre, Apellido Paterno y Apellido Materno</li>
+        <li>Tipo de cliente</li>
+        <li>Tipo de persona</li>
+        <li>Fecha de registro (automática)</li>
+        <li>Notas</li>
+        <li>Contactos (Teléfono, Correo)</li>
+        <li>Direcciones</li>
+        <li>Datos fiscales</li>
       </ul>
-    </section>
+    </li>
+    <li><strong>Visualizar un cliente</strong> utilizando: ID del cliente, Nombre completo, Tipo de cliente.</li>
+    <li><strong>Eliminar un cliente</strong> utilizando: ID del cliente, Nombre completo.</li>
+    <li><strong>Editar un cliente</strong> utilizando: ID del cliente, Nombre completo (para modificar contactos, direcciones, datos fiscales o notas).</li>
+  </ul>
+</section>
+
+<!-- FUNCIONES DEL EMPLEADO -->
+<section class="card">
+  <h2>Funciones del Empleado</h2>
+  <ul>
+    <li><strong>Ingresar un cliente básico</strong> utilizando:
+      <ul>
+        <li>Nombre, Apellido Paterno y Apellido Materno</li>
+        <li>Tipo de cliente</li>
+        <li>Tipo de persona</li>
+      </ul>
+    </li>
+    <li><strong>Visualizar un cliente</strong> utilizando: ID del cliente, Nombre completo, Tipo de cliente.</li>
+  </ul>
+</section>
+
   <section class="card">
   <h2>Diseño de la base de datos del subsistema</h2>
   <div class="fields">
-    <a href="../Empleados/DiagramaEmpleados.html" class="chip">📊 Diagrama de la base de datos</a>
-    <a href="../Empleados/TablasEmpleadosSQL.html" class="chip">🧩 Código SQL: Crear tablas</a>
-    <a href="../Empleados/RegistrosEmpleados.html" class="chip">📝 Código SQL: Agregar registros</a>
+    <a href="../Clientes/DiagramaClientes.html" class="chip">📊 Diagrama de la base de datos</a>
+    <a href="../Clientes/TablasClientesSQL.html" class="chip">🧩 Código SQL: Crear tablas</a>
+    <a href="../Clientes/RegistrosClientes.html" class="chip">📝 Código SQL: Agregar registros</a>
   </div>
 </section>
 

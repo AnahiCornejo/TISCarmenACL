@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hotel – Gestión (Inventario, Proveedores, Horarios, Reservaciones, Habitaciones)</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #121a2b;
+      --muted: #8aa0c3;
+      --text: #e7ecf5;
+      --accent: #4ea1ff;
+      --accent-2: #79f2d0;
+      --border: #24324f;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(78,161,255,.25), transparent 60%),
+                  radial-gradient(1000px 700px at 0% 110%, rgba(121,242,208,.2), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,18,32,.8);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .wrap {
+      max-width: 1100px;
+      margin-inline: auto;
+      padding: 18px 20px;
+    }
+    nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+    .navlinks {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--text);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      transition: background 0.3s;
+    }
+    .chip:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    main {
+      padding: 28px 20px;
+    }
+    h1 {
+      font-size: clamp(24px, 3.5vw, 40px);
+      line-height: 1.05;
+      margin: 10px 0 6px;
+    }
+    p.lead {
+      color: var(--muted);
+      max-width: 72ch;
+    }
+    .grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 22px;
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.15);
+      margin-top: 22px;
+    }
+    .card h2 {
+      font-size: clamp(18px, 2.4vw, 24px);
+      margin: 0 0 10px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    section {
+      scroll-margin-top: 90px;
+    }
+    .fields {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 12px;
+    }
+    .field {
+      padding: 10px 12px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .desc {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .anchor {
+      display: inline-block;
+      margin-top: 22px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .anchor:hover {
+      text-decoration: underline;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      background: rgba(255,255,255,.02);
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- HEADER CON NAVEGACIÓN -->
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand">Hotel – Gestión</div>
+      <div class="navlinks">
+        <a href="../Empleados/Empleados.html" style="color: white;">Regresar</a>
+        <a class="chip" href="../index.html" style="color: white;">🏠 Inicio</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="wrap">
+    <h1>Diagrama en la base de datos de Clientes</h1>
+    <p class="lead">Sistema de control y administración de clientes del hotel, que registra datos personales, contactos, direcciones y datos fiscales, gestionando la información de forma segura y eficiente para mejorar la atención al cliente.</p>
+    <!-- DESCRIPCIÓN DEL SISTEMA -->
+    <section class="card">
+      <h2>Clientes</h2>
+      <ul>
+        </li>Diseñar y administrar un sistema de almacenamiento estructurado que permita registrar, organizar y mantener actualizada la información de los clientes, incluyendo sus datos personales, contactos, direcciones y datos fiscales, con el fin de facilitar la gestión comercial,
+         asegurar el cumplimiento de requisitos legales y de facturación, y mejorar la atención al cliente.</li>
+      </ul>
+    </section>
+
+    <!-- USUARIOS DEL SISTEMA -->
+    <section class="card">
+      <h2>Diagrama de base de datos </h2>
+      <img src="../Imagenes/DiegramaClientes.png" alt="Descripción de la imagen" width="800" height="400" style="display: block; margin: 0 auto;">
+    </section> 
+
+<section class="card">
+  <h2>Descripción de Pertinencia de la Arquitectura de la Base de Datos, en la tabla Clientes</h2>
+  <p>
+    Esta arquitectura relacional es pertinente porque permite gestionar la información de los clientes de manera ordenada, segura y eficiente, 
+    apoyando la operación diaria del hotel y facilitando la atención al cliente y la gestión de información fiscal y de contacto.
+  </p>
+
+  <h3>Explicación de cada campo - Clientes</h3>
+  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Tipo de dato</th>
+        <th>Permitir valores nulos</th>
+        <th>Propósito y Justificación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ClienteID</td>
+        <td>int (IDENTITY)</td>
+        <td>No</td>
+        <td>Identificador único del cliente; clave primaria para diferenciar registros.</td>
+      </tr>
+      <tr>
+        <td>Nombre</td>
+        <td>nvarchar(100)</td>
+        <td>No</td>
+        <td>Almacena el nombre del cliente para identificación.</td>
+      </tr>
+      <tr>
+        <td>Apelli_Paterno</td>
+        <td>nvarchar(100)</td>
+        <td>No</td>
+        <td>Primer apellido del cliente, necesario para identificación formal.</td>
+      </tr>
+      <tr>
+        <td>Apellido_Materno</td>
+        <td>nvarchar(100)</td>
+        <td>No</td>
+        <td>Segundo apellido del cliente, permite identificación completa.</td>
+      </tr>
+      <tr>
+        <td>FechaRegistro</td>
+        <td>datetime</td>
+        <td>Sí (DEFAULT GETDATE())</td>
+        <td>Fecha en que se registró el cliente; útil para auditoría y seguimiento histórico.</td>
+      </tr>
+      <tr>
+        <td>TipoCliente</td>
+        <td>nvarchar(50)</td>
+        <td>Sí</td>
+        <td>Clasificación del cliente (Regular, VIP, etc.) para segmentación y control.</td>
+      </tr>
+      <tr>
+        <td>TipoPersona</td>
+        <td>nvarchar(20)</td>
+        <td>No</td>
+        <td>Define si el cliente es “Física” o “Moral”; necesario para fines fiscales.</td>
+      </tr>
+      <tr>
+        <td>Notas</td>
+        <td>nvarchar(250)</td>
+        <td>Sí</td>
+        <td>Observaciones adicionales sobre el cliente (preferencias, comentarios internos, etc.).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Explicación de cada campo - Contactos_Cliente</h3>
+  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Tipo de dato</th>
+        <th>Permitir valores nulos</th>
+        <th>Propósito y Justificación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ContactoID</td>
+        <td>int (IDENTITY)</td>
+        <td>No</td>
+        <td>Identificador único de cada contacto; clave primaria.</td>
+      </tr>
+      <tr>
+        <td>ClienteID</td>
+        <td>int (FK)</td>
+        <td>No</td>
+        <td>Relaciona el contacto con el cliente correspondiente.</td>
+      </tr>
+      <tr>
+        <td>TipoContacto</td>
+        <td>nvarchar(20)</td>
+        <td>No</td>
+        <td>Define si el contacto es “Teléfono” o “Correo”.</td>
+      </tr>
+      <tr>
+        <td>Valor</td>
+        <td>nvarchar(50)</td>
+        <td>No</td>
+        <td>Almacena el número de teléfono o correo electrónico del cliente.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Explicación de cada campo - Direcciones_Cliente</h3>
+  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Tipo de dato</th>
+        <th>Permitir valores nulos</th>
+        <th>Propósito y Justificación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>DireccionID</td>
+        <td>int (IDENTITY)</td>
+        <td>No</td>
+        <td>Identificador único de cada dirección; clave primaria.</td>
+      </tr>
+      <tr>
+        <td>ClienteID</td>
+        <td>int (FK)</td>
+        <td>No</td>
+        <td>Relaciona la dirección con el cliente correspondiente.</td>
+      </tr>
+      <tr>
+        <td>TipoDireccion</td>
+        <td>nvarchar(20)</td>
+        <td>Sí</td>
+        <td>Clasificación de la dirección (Fiscal o Residencial).</td>
+      </tr>
+      <tr>
+        <td>Calle</td>
+        <td>nvarchar(100)</td>
+        <td>Sí</td>
+        <td>Nombre de la calle, parte de la dirección completa.</td>
+      </tr>
+      <tr>
+        <td>Ciudad</td>
+        <td>nvarchar(50)</td>
+        <td>Sí</td>
+        <td>Ciudad de la dirección.</td>
+      </tr>
+      <tr>
+        <td>Estado</td>
+        <td>nvarchar(50)</td>
+        <td>Sí</td>
+        <td>Estado o provincia de la dirección.</td>
+      </tr>
+      <tr>
+        <td>CodigoPostal</td>
+        <td>nvarchar(10)</td>
+        <td>Sí</td>
+        <td>Código postal de la dirección.</td>
+      </tr>
+      <tr>
+        <td>Pais</td>
+        <td>nvarchar(50)</td>
+        <td>Sí</td>
+        <td>País de la dirección.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Explicación de cada campo - Clientes_Fiscal</h3>
+  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Tipo de dato</th>
+        <th>Permitir valores nulos</th>
+        <th>Propósito y Justificación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ClienteID</td>
+        <td>int (PK, FK)</td>
+        <td>No</td>
+        <td>Relaciona los datos fiscales con el cliente correspondiente.</td>
+      </tr>
+      <tr>
+        <td>RFC</td>
+        <td>nvarchar(15)</td>
+        <td>No</td>
+        <td>Registro Federal de Contribuyentes, necesario para facturación.</td>
+      </tr>
+      <tr>
+        <td>RazonSocial</td>
+        <td>nvarchar(100)</td>
+        <td>Sí</td>
+        <td>Nombre fiscal de la empresa o persona moral.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+
+
+    <!-- VOLVER ARRIBA -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; gap:18px; padding:18px 20px">
+      <small>© <span id="y"></span> Hotel – Sistema de Gestión</small>
+      <a class="chip" href="#top">↑ Subir</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
